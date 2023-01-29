@@ -159,7 +159,7 @@ module Recaptcha
         async_attr = "async" if script_async != false
         defer_attr = "defer" if script_defer != false
         nonce_attr = " nonce='#{nonce}'" if nonce
-        html << %(<script src="#{script_url}" type="text/javascript" #{async_attr} #{defer_attr} #{nonce_attr}></script>\n) unless skip_script
+        html << %(<script data-ccm-loader-src="#{script_url}" type="text/x-ccm-loader" data-ccm-loader-group="recaptcha" #{async_attr} #{defer_attr} #{nonce_attr}></script>\n) unless skip_script
         fallback_uri = %(#{script_url.chomp(".js")}/fallback?k=#{site_key})
         attributes["data-sitekey"] = site_key
         attributes.merge! data_attributes
